@@ -9,10 +9,6 @@ interface propTypes {
 }
 
 const links = [
-  {
-    name: 'home',
-    slug: '/'
-  },
    {
     name: 'Add Test',
     slug: '/add_test'
@@ -28,6 +24,8 @@ export const Sidebar = ({setFullWidth, fullWidth}: propTypes) => {
 
   const router = useRouter()
   const currentRoute = router.pathname
+
+
 
   const [toogle, setToogle] = useState<Boolean>(true)
 

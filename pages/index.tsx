@@ -4,8 +4,8 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import { HomePage } from '../components'
-import { Dashboard } from './dashboard'
-import { LandingPage } from './landing_page'
+import Dashboard from './dashboard'
+import LandingPage from './landing_page'
 
 
 const Home: NextPage = () => {

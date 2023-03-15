@@ -3,7 +3,7 @@ import React from 'react'
 import { Button } from '../components'
 import { useRouter } from 'next/router'
 
-export const LandingPage: NextPage = () => {
+const LandingPage: NextPage = () => {
 
   const router = useRouter()
 
@@ -13,4 +13,6 @@ export const LandingPage: NextPage = () => {
     </div>
   )
 }
+
+export default LandingPage
 

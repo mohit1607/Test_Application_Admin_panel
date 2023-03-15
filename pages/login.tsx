@@ -1,8 +1,16 @@
 import React, { useState } from 'react'
 import { Button } from '../components'
 import { adminLogin } from '../api'
+import {  useDispatch } from 'react-redux'
+import { setUserAndToken } from '../features/authSlice'
+import { useRouter } from 'next/router'
 
 const Login = () => {
+
+    //redux method
+    let dispatch = useDispatch()
+    const router = useRouter()
+
     const [signUp, setSignUp] = useState<Boolean>(false)
     // hardcoding volatile values will change to form in future.
     const [loginEmail, setLoginEmail] = useState<string>('')
@@ -10,8 +18,8 @@ const Login = () => {
 
     const Login = async() => {
         const newObj ={
-            email: 'admin@email.com',
-            password: 'admin123'
+            email: loginEmail,
+            password: loginPassword
         }
         try{
             const res = await adminLogin(newObj)
@@ -20,11 +28,13 @@ const Login = () => {
             const {data} = await res // have to change it. very  vulnerable.
             // console.log(res)
             const {user}: any = await data
-            const {name} =  user 
-            alert(name)
+            const {name, token} =  user 
+            // alert(token)
+            dispatch(setUserAndToken({name,token}))
+            router.push('/dashboard')
         } catch(e) {
             alert('Login Error')
-            console.log(e)
+            // console.log(e)
         }
     }
 
@@ -66,9 +76,15 @@ const Login = () => {
                             <input
                             value={loginPassword}
                             onChange={(e) => setLoginPassword(e.target.value)}
+                            onKeyUp={(e) => {
+                                if(e.key === 'Enter') {
+                                    Login()
+                                }
+                            }}
                              type="password" placeholder='Password' className='w-full h-[100%] text-lg focus:outline-none bg-transparent' />
                         </div>
-                        <Button onClick={() => Login()} className='text-xl p-4 active:scale-95 transition-all bg-green-500 text-white font-semibold' >Login</Button>
+                        <Button onClick={() => Login()}
+                         className='text-xl p-4 active:scale-95 transition-all bg-green-500 text-white font-semibold' >Login</Button>
                         <a onClick={() => setSignUp(!signUp)} className='cursor-pointer text-blue-600'> Don't have account? Register </a>
                     </div>
             }
