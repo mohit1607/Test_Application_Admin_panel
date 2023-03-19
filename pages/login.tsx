@@ -28,10 +28,10 @@ const Login = () => {
             const {data} = await res // have to change it. very  vulnerable.
             // console.log(res)
             const {user}: any = await data
-            const {name, token} =  user 
+            const {name, token, university} =  user 
             // alert(token)
-            dispatch(setUserAndToken({name,token}))
-            router.push('/dashboard')
+            dispatch(setUserAndToken({name,token, university}))
+            router.push('/dashboard') // will navigate to /dashboard page.
         } catch(e) {
             alert('Login Error')
             // console.log(e)
