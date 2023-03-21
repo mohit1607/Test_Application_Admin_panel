@@ -19,3 +19,10 @@ headers: {
     Authorization: `Bearer ${token}`
 }
 })
+
+export const deleteTest = (id:string, token: any) => axios.delete(`${URL}/tests/del`, {
+    data: {id},
+    headers: {
+         Authorization: `Bearer ${token}`
+    }
+})

@@ -34,6 +34,9 @@ const addTest: NextPage = () => {
     getAllTestsHere()
   })
 
+
+
+
   return (
     <ProtectedRoute>
       <SidebarLayout>
@@ -46,7 +49,12 @@ const addTest: NextPage = () => {
             {
               tests?.map((curr, index) => {
                 return(
-                  <TestCard key={index + 291} name={curr.name} duration={curr.duration} date={curr.date}></TestCard>
+                  <TestCard 
+                  key={index + 291} 
+                  name={curr.name} 
+                  id={curr.id}
+                  duration={curr.duration} 
+                  date={curr.date}></TestCard>
                 )
               })
             }
