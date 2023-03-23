@@ -17,6 +17,10 @@ const links = [
     name: 'Submissions',
     slug: '/dashboard_page2'
   },
+  {
+    name: 'Students',
+    slug: '/students'
+  }
   
 ]
 

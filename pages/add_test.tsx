@@ -16,23 +16,27 @@ const addTest: NextPage = () => {
 
   // add Test as TestCard
   const token = useSelector((state: any) => state.auth.token)
-
   const [createTest, setCreateTest] = useState<boolean>(false)
   const [tests, setTests] = useState<any[]>()
 
-  useEffect(() => {
-    const getAllTestsHere = async() => {
-      try{
-        const res = await getAllTests(token)
-        const data = await res.data
-        // console.log(data.allTests)
-        setTests(data.allTests)
-      } catch(e) {
-        console.log('something went wrong')
-      }
+  const getAllTestsHere = async () => {
+    try {
+      const res = await getAllTests(token)
+      const data = await res.data
+      // console.log(data.allTests)
+      setTests(data.allTests)
+      //  This is leathel cuz it will give infinite loop
+      return data.allTests
+    } catch (e) {
+      console.log('something went wrong')
     }
+  }
+
+  useEffect(() => {
+    // This is causing infinite query cuz everytime it is queried the data is changed
+    // and the component rerenders that will call the useEffect again
     getAllTestsHere()
-  })
+  },[]) // passing this empty array will not cause infinite loop
 
 
 

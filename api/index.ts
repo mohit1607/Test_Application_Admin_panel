@@ -26,3 +26,11 @@ export const deleteTest = (id:string, token: any) => axios.delete(`${URL}/tests/
          Authorization: `Bearer ${token}`
     }
 })
+
+export const createStudent = (body: any) => axios.post(`${URL}/student/create`, body)
+
+export const getAllStudentsByUniversity = (university: any) => axios.post(`${URL}/student/all`, { university})
+
+export const deleteStudent = (body: any) => axios.delete(`${URL}/student/del`, {
+    data: body
+}) 

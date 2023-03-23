@@ -42,8 +42,8 @@ export const TestCard = ({ name = 'dummyTest', id = '112235', duration = '02:45:
     }
 
     return (
-        <div onClick={() => headToTestConfigPage()} className='p-4 rounded shadow-lg w-[16rem] h-[12rem] bg-yellow-200 flex flex-col justify-between'>
-            <h1 className='text-xl'>{name}</h1>
+        <div onClick={() => headToTestConfigPage()} className='p-4  cursor-pointer rounded shadow-lg w-[16rem] h-[12rem] bg-yellow-200 flex flex-col justify-between'>
+            <h1 className='text-xl hover:underline'>{name}</h1>
             <hr className='h-[1px] bg-black border-none mb-2' />
             <div className='flex justify-between'>
                 <p className='font-semibold'>Duration:</p>
@@ -54,9 +54,7 @@ export const TestCard = ({ name = 'dummyTest', id = '112235', duration = '02:45:
                 <p>{date}</p>
             </div>
             <div className='mt-2 flex justify-between'>
-                <Button className='py-2 px-4 text-white rounded bg-red-400 ' onClick={() => deleteFun(id)}>D</Button>
-                <Button className='py-2 px-4 text-white rounded bg-green-400 ' onClick={() => updateFun()}>U</Button>
-            </div>
+                <Button className='py-2 px-4 text-white rounded bg-red-400 ' onClick={() => deleteFun(id)}>D</Button>            </div>
         </div>
     )
 }
