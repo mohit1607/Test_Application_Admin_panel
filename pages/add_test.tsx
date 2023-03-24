@@ -23,7 +23,7 @@ const addTest: NextPage = () => {
     try {
       const res = await getAllTests(token)
       const data = await res.data
-      // console.log(data.allTests)
+      console.log(data.allTests)
       setTests(data.allTests)
       //  This is leathel cuz it will give infinite loop
       return data.allTests
