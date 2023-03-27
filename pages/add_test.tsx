@@ -58,6 +58,7 @@ const addTest: NextPage = () => {
                   name={curr.name} 
                   id={curr.id}
                   duration={curr.duration} 
+                  objectId= {curr._id}
                   date={curr.date}></TestCard>
                 )
               })

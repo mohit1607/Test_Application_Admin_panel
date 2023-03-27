@@ -4,7 +4,7 @@ import { Button } from './Button'
 
 
 interface propTypes {
-  children: JSX.Element | string
+  children: JSX.Element | string | JSX.IntrinsicElements
 }
 
 export const SidebarLayout = ({ children }: propTypes) => {

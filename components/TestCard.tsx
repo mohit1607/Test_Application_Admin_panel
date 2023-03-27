@@ -10,9 +10,10 @@ interface propTypes {
     duration: string,
     date: string,
     id: string,
+    objectId: string
 }
 
-export const TestCard = ({ name = 'dummyTest', id = '112235', duration = '02:45:00', date = '12/04/2023' }: propTypes) => {
+export const TestCard = ({ name = 'dummyTest', id = '112235', duration = '02:45:00', date = '12/04/2023', objectId='nothing' }: propTypes) => {
 
     const token = useSelector((state: any) => state.auth.token)
     const router = useRouter()
@@ -36,7 +37,7 @@ export const TestCard = ({ name = 'dummyTest', id = '112235', duration = '02:45:
         router.push({
             pathname: '/test_config',
             query: {
-                name, id, duration, date
+                name, id, duration, date, objectId
             }
         })
     }

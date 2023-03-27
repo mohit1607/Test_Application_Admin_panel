@@ -34,3 +34,10 @@ export const getAllStudentsByUniversity = (university: any) => axios.post(`${URL
 export const deleteStudent = (body: any) => axios.delete(`${URL}/student/del`, {
     data: body
 }) 
+
+// insert many questions.
+export const createQuestions = (body: any, token: string) => axios.post(`${URL}/questions/create`, body, {
+    headers: {
+        Authorization: `Bearer ${token}`
+    }
+})

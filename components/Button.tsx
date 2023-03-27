@@ -2,7 +2,7 @@ import React from 'react'
 
 type propTypes = {
     onClick?: Function,
-    children: string ,
+    children: any ,
     // rest of the parameters
     [x: string]: any
 }
