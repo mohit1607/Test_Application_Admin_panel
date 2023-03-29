@@ -23,17 +23,20 @@ export const CreateTestForm = ({ displayPage, setDisplayPage }: propTypes) => {
             name: data.get('name'),
             id: (Math.floor(Math.random() * 90000) + 100000).toString(),
             date: data.get('date'),
-            duration: data.get('duration'),
+            startTime: data.get('startTime'),
+            endTime: data.get('endTime'),
             university: university
         }
-        try {
-            const res = await addTest(newTest,token) 
-            console.log(res)
-            alert('New Test created')
-            setDisplayPage(!displayPage)
-        } catch (e) {
-            console.log('something went wrong')
-        }
+        // try {
+        //     const res = await addTest(newTest,token) 
+        //     console.log(res)
+        //     alert('New Test created')
+        //     setDisplayPage(!displayPage)
+        // } catch (e) {
+        //     console.log('something went wrong')
+        // }
+
+        console.log(newTest)
     }
 
     
@@ -43,13 +46,17 @@ export const CreateTestForm = ({ displayPage, setDisplayPage }: propTypes) => {
         <div className='flex flex-col gap-4 absolute justify-center items-center h-[80%] w-[80%] z-20 bg-transparent backdrop-blur-sm'>
             <h1 className='text-2xl font-bold tracking-wider'>Add Test</h1>
             <div className='bg-slate-100 border shadow-lg h-[30rem] w-[26rem]'>
-                <form onSubmit={(e) => handleOnSubmit(e)}>
+                <form onSubmit={(e) => {
+                     handleOnSubmit(e)
+                    }}>
                     <div className='p-4 flex flex-col justify-between items-center w-full gap-3'>
                         <input name='name' className='w-full p-4 border-2 border-green-700 focus:outl' placeholder='Test Name' type="text" />
                         <label className='mt-2' htmlFor="date">Select Date</label>
                         <input name='date' className='w-full p-4 border-2 border-green-700 focus:outl' type="date" />
-                        <label htmlFor="duration">Set Duration (hours)</label>
-                        <input defaultValue={1} step={0.5} name='duration' className='border w-full rounded-md p-2' placeholder='Set Hours' type="number" min={0} max={24} />
+                        <label htmlFor="startTime">Start Time</label>
+                        <input name='startTime' className='border w-full rounded-md p-2' placeholder='Set Start time' type="time"  />
+                        <label htmlFor="duration">Set End Time</label>
+                        <input name='endTime' className='border w-full rounded-md p-2' placeholder='Set End time' type="time"  />
                     </div>
                     <div className='flex justify-between p-4'>
                         <Button onClick={() => setDisplayPage(!displayPage)} className='transition-all active:scale-95 hover:opacity-80 bg-red-500 text-white font-bold rounded-md w-[6rem] h-[3.5rem]'>Cancel</Button>

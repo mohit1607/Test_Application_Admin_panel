@@ -15,8 +15,8 @@ const TestConfigComp = () => {
   const [file, setFile] = useState<any>() // cuz I dont know about the filetype
   const [fileData, setFileData] = useState<any[]>()
 
-  const handleFileInput = async() => {
-    try{
+  const handleFileInput = async () => {
+    try {
       if (file.type === 'application/json') {
         let fileReader = new FileReader()
         fileReader.readAsText(file)
@@ -25,17 +25,24 @@ const TestConfigComp = () => {
           setFileData(JSON.parse(e.target.result).questions)
         }
         console.log(query.objectId)
-      } else {
+      } else if (file.type === 'text/csv') {
+        let fileReader = new FileReader()
+        fileReader.readAsText(file)
+        fileReader.onload = (e: any) => {
+          console.log(e.target.result)
+        }
+      }
+      else {
         alert('No file is submitted.')
       }
       console.log(file)
-    }catch(e) {
+    } catch (e) {
       alert('please upload the questions file first.')
     }
   }
 
-  const submitQuestionsToDB = async() => {
-    if(fileData){
+  const submitQuestionsToDB = async () => {
+    if (fileData) {
       try {
         const res = await createQuestions({
           testId: query.objectId,
@@ -46,7 +53,7 @@ const TestConfigComp = () => {
       } catch (e) {
         console.log(e)
       }
-    }else{
+    } else {
       alert("You did'nt upload any file to submit.")
     }
   }
@@ -65,11 +72,11 @@ const TestConfigComp = () => {
               type="file"
               name='file'
               className='overflow-hidden w-[15rem]'
-              accept='.json' />
+              accept='.json, .csv' />
           </Button>
           <Button onClick={handleFileInput} className='rounded-md bg-yellow-500 text-white font-semibold text-center p-4 trasition-linear transition-linear duration-150 active:scale-95' >Check</Button>
-          <Button onClick={() => submitQuestionsToDB()}  className='rounded-md bg-green-500 text-white font-semibold text-center p-4 trasition-linear transition-linear duration-150 active:scale-95' >Submit</Button>
-          
+          <Button onClick={() => submitQuestionsToDB()} className='rounded-md bg-green-500 text-white font-semibold text-center p-4 trasition-linear transition-linear duration-150 active:scale-95' >Submit</Button>
+
         </div>
         <div className='p-4 w-full h-[80vh] overflow-auto bg-slate-200 mt-4 rounded-md'>
           <p className='text-slate-400'> // Your data will be shown here</p>
