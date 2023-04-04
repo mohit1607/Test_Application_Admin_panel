@@ -36,7 +36,7 @@ const addTest: NextPage = () => {
     // This is causing infinite query cuz everytime it is queried the data is changed
     // and the component rerenders that will call the useEffect again
     getAllTestsHere()
-  },[]) // passing this empty array will not cause infinite loop
+  },[ createTest]) // passing this empty array will not cause infinite loop
 
 
 
@@ -57,7 +57,8 @@ const addTest: NextPage = () => {
                   key={index + 291} 
                   name={curr.name} 
                   id={curr.id}
-                  duration={curr.duration} 
+                  startTime={curr.startTime} 
+                  endTime={curr.endTime} 
                   objectId= {curr._id}
                   date={curr.date}></TestCard>
                 )

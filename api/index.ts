@@ -41,3 +41,10 @@ export const createQuestions = (body: any, token: string) => axios.post(`${URL}/
         Authorization: `Bearer ${token}`
     }
 })
+
+export const deleteAllQuestionsById = (body: any, token: string) => axios.delete(`${URL}/questions/delete`, {
+    data: body,
+    headers: {
+        Authorization: `Bearer ${token}`
+    }
+})

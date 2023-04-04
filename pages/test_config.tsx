@@ -91,12 +91,10 @@ const TestConfigComp = () => {
 
 const testConfig = () => {
   return (
-    // <ProtectedRoute>
-    //     <TestConfigComp>
-
-    //     </TestConfigComp>
-    // </ProtectedRoute>
-    <TestConfigComp></TestConfigComp>
+    <ProtectedRoute>
+        <TestConfigComp></TestConfigComp>
+    </ProtectedRoute>
+    // <TestConfigComp></TestConfigComp> // for dev purpose
   )
 }
 
